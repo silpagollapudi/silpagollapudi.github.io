@@ -135,6 +135,113 @@
   .placeholder-icon { font-size: 24px; font-weight: 200; color: #8B4A2A; }
   .placeholder-text { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4A4038; font-weight: 400; }
 
+  /* BOOKSHELF SECTION */
+  #bookshelf { border-bottom: 1px solid rgba(80,60,40,0.15); }
+
+  .books-layout { display: grid; grid-template-columns: 1fr 180px; gap: 56px; align-items: end; }
+  .books-left-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #4A4038; font-weight: 400; margin-bottom: 20px; }
+
+  .shelf-outer { position: relative; overflow-x: auto; }
+  .shelf-books { display: flex; align-items: flex-end; gap: 3px; padding: 0 2px; min-width: max-content; }
+
+  .book {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 1px 3px 3px 1px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    
+  }
+
+  .book:hover { transform: translateY(-10px); }
+
+  .book-inner {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: black;
+    padding: 12px 0;
+    text-align: center;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    max-width: 100%;
+  }
+
+  .book::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: rgba(0,0,0,0.18); border-radius: 1px 0 0 1px; }
+
+  /* tooltip with full title + author */
+  .book::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1C1A18;
+    color: #F5F0E8;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 7px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s;
+    z-index: 20;
+  }
+  .book:hover::after { opacity: 1; }
+
+  .shelf-plank { height: 14px; background: linear-gradient(to bottom, #7A5030, #5C3A20); border-radius: 2px; box-shadow: 0 4px 12px rgba(80,40,20,0.35); }
+  .shelf-support { display: flex; justify-content: space-between; padding: 0 20px; }
+  .shelf-support-leg { width: 10px; height: 20px; background: #5C3A20; border-radius: 0 0 3px 3px; opacity: 0.6; }
+
+  .b1  { background: #B58A6F; width: 32px; height: 190px; }   /* soft brown */
+  .b2  { background: #DEA188; width: 36px; height: 200px; }   /* warm peach */
+  .b3  { background: #C9B97A; width: 30px; height: 185px; }   /* muted gold */
+  .b4  { background: #EAC1A8; width: 34px; height: 195px; }   /* light peach */
+  .b5  { background: #8BB7AD; width: 32px; height: 188px; }   /* soft sage */
+  .b6  { background: #A692C2; width: 38px; height: 202px; }   /* light lavender */
+  .b7  { background: #8FAFD0; width: 28px; height: 180px; }   /* airy blue */
+  .b8  { background: #C69578; width: 44px; height: 198px; }   /* clay */
+  .b9  { background: #A8C28A; width: 48px; height: 205px; }   /* light olive */
+  .b10 { background: #D99A9A; width: 36px; height: 196px; }   /* soft rose */
+  .b11 { background: #7FAFB0; width: 34px; height: 192px; }   /* pastel teal */
+  .b12 { background: #B58A6F; width: 32px; height: 190px; }   /* soft brown */
+  .b13 { background: #DEA188; width: 36px; height: 200px; }   /* warm peach */
+  .b14 { background: #C9B97A; width: 30px; height: 185px; }   /* muted gold */
+  .b15 { background: #EAC1A8; width: 34px; height: 195px; }   /* light peach */
+  .b16 { background: #8BB7AD; width: 32px; height: 188px; }   /* soft sage */
+
+  /* CURRENTLY READING */
+  .currently-reading-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #4A4038; font-weight: 400; margin-bottom: 20px; }
+  .current-book { display: flex; flex-direction: column; align-items: center; }
+  .current-book-cover {
+    width: 110px; height: 160px;
+    background: #7FAFB0;
+    border-radius: 2px 6px 6px 2px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 14px 12px;
+    position: relative;
+    box-shadow: 4px 4px 16px rgba(80,40,20,0.25), inset -3px 0 8px rgba(0,0,0,0.2);
+  }
+  .current-book-cover::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: rgba(0,0,0,0.2); border-radius: 2px 0 0 2px; }
+  .current-book-title { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.95); line-height: 1.3; z-index: 1; }
+  .current-book-author { font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); z-index: 1; }
+  .current-book-plank { width: 130px; height: 10px; background: linear-gradient(to bottom, #7A5030, #5C3A20); border-radius: 2px; box-shadow: 0 3px 8px rgba(80,40,20,0.3); }
+  .current-book-meta { margin-top: 12px; text-align: center; }
+  .current-book-meta-title { font-size: 12px; font-weight: 400; color: #1C1A18; letter-spacing: 0.04em; }
+  .current-book-meta-author { font-size: 11px; color: #8B4A2A; font-weight: 300; letter-spacing: 0.04em; margin-top: 2px; }
+
   /* CONTACT */
   #contact { padding-bottom: 120px; }
   .contact-rows { max-width: 480px; }
@@ -160,6 +267,7 @@
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#creative">Creative</a></li>
+    <li><a href="#bookshelf">Bookshelf</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -194,13 +302,13 @@
   <div id="exp-fulltime" class="exp-panel active">
     <div class="role-card">
       <div class="role-meta">
-        <span class="role-dates">Jun 2020 – Mar 2026</span>
+        <span class="role-dates">Jun 2020 – Present </span>
         <span class="role-tag">IT Consulting</span>
       </div>
       <div>
         <p class="role-title">Senior Software Consultant</p>
         <p class="role-company">Stratosphere Consulting</p>
-        <p class="role-desc">IT consulting firm specialized in application development. Led end-to-end product and systems work across government and telecom clients — translating complex business requirements into scalable digital solutions.</p>
+        <p class="role-desc">IT consulting firm specialized in application development. Leading end-to-end product and systems work across government and telecom clients and translating complex business requirements into scalable digital solutions.</p>
       </div>
     </div>
     <div class="skills-block">
@@ -209,16 +317,20 @@
         <div>
           <p class="skills-group-title">Technical Skills</p>
           <div class="skills-pills">
-            <span class="skill-pill">Figma</span>
             <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">Python</span>
             <span class="skill-pill">SQL</span>
             <span class="skill-pill">HTML / CSS</span>
-            <span class="skill-pill">Pega</span>
             <span class="skill-pill">Tableau</span>
             <span class="skill-pill">Agile Scrum</span>
-            <span class="skill-pill">Python</span>
             <span class="skill-pill">JIRA</span>
+            <span class="skill-pill">Figma</span>
             <span class="skill-pill">Pega 8.x</span>
+            <span class="skill-pill">Case Management & Workflow Design</span>
+            <span class="skill-pill">REST/SOAP</span>
+            <span class="skill-pill">System Architecture</span>
+            <span class="skill-pill">Event-Driven Systems</span>
           </div>
         </div>
         <div>
@@ -394,6 +506,62 @@
       <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
       <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
       <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKSHELF — its own section -->
+<section id="bookshelf">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Bookshelf</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="books-layout">
+    <div>
+      <p class="books-left-label">Favorites</p>
+      <div class="shelf-outer">
+        <div class="shelf-books">
+          <div class="book b1" data-tip="Dark Matter"><span class="book-inner">Dark Matter</span></div>
+          <div class="book b2" data-tip="The Nightingale"><span class="book-inner">The Nightingale</span></div>
+          <div class="book b3" data-tip="Recursion"><span class="book-inner">Recursion</span></div>
+          <div class="book b4" data-tip="The Alchemist"><span class="book-inner">The Alchemist</span></div>
+          <div class="book b5" data-tip="Project Hail Mary"><span class="book-inner">Project Hail Mary</span></div>
+          <div class="book b6" data-tip="The Night Circus"><span class="book-inner">The Night Circus</span></div>
+          <div class="book b7" data-tip="The Employees"><span class="book-inner">The Employees</span></div>
+          <div class="book b8" data-tip="Eleanor Oliphant Is Completely Fine"><span class="book-inner">Eleanor Oliphant Is Completely Fine</span></div>
+          <div class="book b9" data-tip="Tomorrow, and Tomorrow, and Tomorrow"><span class="book-inner">Tomorrow, and Tomorrow, and Tomorrow</span></div>
+          <div class="book b10" data-tip="Pachinko"><span class="book-inner">Pachinko</span></div>
+          <div class="book b11" data-tip="Americanah"><span class="book-inner">Americanah</span></div>
+          <div class="book b12" data-tip="Know My Name"><span class="book-inner">Know My Name</span></div>
+          <div class="book b13" data-tip="An American Marriage"><span class="book-inner">An American Marriage</span></div>
+          <div class="book b14" data-tip="The Great Believers"><span class="book-inner">The Great Believers</span></div>
+          <div class="book b15" data-tip="The Storied Life of A.J. Fikry"><span class="book-inner">The Storied Life of A.J. Fikry</span></div>
+          <div class="book b16" data-tip="The Immortalists"><span class="book-inner">The Immortalists</span></div>
+
+        
+        
+        
+        
+        </div>
+        <div class="shelf-plank"></div>
+        <div class="shelf-support"><div class="shelf-support-leg"></div><div class="shelf-support-leg"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <p class="currently-reading-label">Currently Reading</p>
+      <div class="current-book">
+        <div class="current-book-cover">
+          <img src="images/MyFriends.jpg" alt="My Friends">
+        </div>
+        <div class="current-book-plank"></div>
+        <div class="current-book-meta">
+          <p class="current-book-meta-title">My Friends</p>
+          <p class="current-book-meta-author">Fredrik Backman</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
