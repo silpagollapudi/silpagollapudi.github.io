@@ -15,7 +15,7 @@
 
   #hero { padding-top: 260px; padding-bottom: 260px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; border-bottom: 1px solid rgba(80,60,40,0.15); }
   .hero-name { font-size: clamp(52px, 7vw, 80px); font-weight: 200; line-height: 1.0; letter-spacing: 0.06em; text-transform: uppercase; color: #1C1A18; }
-  .hero-name span { display: block; color: #8B4A2A; font-weight: 200; font-style: italic; text-transform: none; letter-spacing: 0.02em; font-size: clamp(44px, 6vw, 70px); }
+  .hero-name span { display: block; color: #8B4A2A; font-weight: 200;  text-transform: none; letter-spacing: 0.02em; font-size: clamp(44px, 6vw, 70px); }
   .hero-right { display: flex; flex-direction: column; gap: 20px; padding-bottom: 6px; }
   .hero-bio { font-size: 14px; line-height: 1.85; color: #2A2520; font-weight: 400; letter-spacing: 0.02em; max-width: 340px; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -96,7 +96,7 @@
   .design-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 
   .design-card {
-    background: #FFFFFF;
+    background: #F5F0E8;
     border: 1px solid rgba(80,60,40,0.12);
     border-radius: 4px;
     overflow: hidden;
@@ -107,8 +107,8 @@
 
   .design-img-wrap {
     width: 100%;
-    aspect-ratio: 3/4;
-    background: #F8F6F2;
+    aspect-ratio: 4/3;
+    background: #F5F0E8;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,8 +129,21 @@
   .img-placeholder-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(80,60,40,0.3); font-weight: 400; }
 
   /* PHOTO GRID */
-  .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .photo-card { background: #EDD9C8; min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; border: 2px dashed #B5704A; cursor: pointer; transition: background 0.3s; }
+  .photo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+  .photo-card { 
+    background: #EDD9C8; 
+    min-height: 260px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    gap: 12px; 
+    border: 2px  #B5704A; 
+    cursor: pointer; 
+    transition: background 0.3s;
+    aspect-ratio: 3/4;
+}
   .photo-card:hover { background: #E8DECE; }
   .placeholder-icon { font-size: 24px; font-weight: 200; color: #8B4A2A; }
   .placeholder-text { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4A4038; font-weight: 400; }
@@ -153,6 +166,12 @@
     border-radius: 1px 3px 3px 1px;
     transition: transform 0.2s ease;
     flex-shrink: 0;
+    opacity: 0.92;
+  box-shadow: 
+    inset 3px 0 6px rgba(255,255,255,0.25),
+    inset -2px 0 6px rgba(0,0,0,0.12),
+    2px 4px 8px rgba(0,0,0,0.15);
+  border-radius: 1px 4px 4px 1px;
     
   }
 
@@ -174,9 +193,22 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     max-width: 100%;
+    
   }
 
-  .book::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: rgba(0,0,0,0.18); border-radius: 1px 0 0 1px; }
+  .book::before { 
+    content: ''; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    bottom: 0; 
+    width: 4px; 
+    background: rgba(0,0,0,0.18); 
+    border-radius: 1px 0 0 1px; 
+    width: 6px; 
+  background: rgba(0,0,0,0.22); 
+  background: linear-gradient(to right, rgba(0,0,0,0.28), rgba(0,0,0,0.05));
+  }
 
   /* tooltip with full title + author */
   .book::after {
@@ -201,39 +233,49 @@
   }
   .book:hover::after { opacity: 1; }
 
-  .shelf-plank { height: 14px; background: linear-gradient(to bottom, #7A5030, #5C3A20); border-radius: 2px; box-shadow: 0 4px 12px rgba(80,40,20,0.35); }
+  .shelf-plank { 
+    height: 14px; 
+    background: linear-gradient(to bottom, #7A5030, #5C3A20); 
+    border-radius: 2px; box-shadow: 0 4px 12px rgba(80,40,20,0.35); 
+  }
   .shelf-support { display: flex; justify-content: space-between; padding: 0 20px; }
   .shelf-support-leg { width: 10px; height: 20px; background: #5C3A20; border-radius: 0 0 3px 3px; opacity: 0.6; }
 
-  .b1  { background: #B58A6F; width: 32px; height: 190px; }   /* soft brown */
-  .b2  { background: #DEA188; width: 36px; height: 200px; }   /* warm peach */
-  .b3  { background: #C9B97A; width: 30px; height: 185px; }   /* muted gold */
-  .b4  { background: #EAC1A8; width: 34px; height: 195px; }   /* light peach */
-  .b5  { background: #8BB7AD; width: 32px; height: 188px; }   /* soft sage */
-  .b6  { background: #A692C2; width: 38px; height: 202px; }   /* light lavender */
-  .b7  { background: #8FAFD0; width: 28px; height: 180px; }   /* airy blue */
-  .b8  { background: #C69578; width: 44px; height: 198px; }   /* clay */
-  .b9  { background: #A8C28A; width: 48px; height: 205px; }   /* light olive */
-  .b10 { background: #D99A9A; width: 36px; height: 196px; }   /* soft rose */
-  .b11 { background: #7FAFB0; width: 34px; height: 192px; }   /* pastel teal */
-  .b12 { background: #B58A6F; width: 32px; height: 190px; }   /* soft brown */
-  .b13 { background: #DEA188; width: 36px; height: 200px; }   /* warm peach */
-  .b14 { background: #C9B97A; width: 30px; height: 185px; }   /* muted gold */
-  .b15 { background: #EAC1A8; width: 34px; height: 195px; }   /* light peach */
-  .b16 { background: #8BB7AD; width: 32px; height: 188px; }   /* soft sage */
+  .b1  { background: linear-gradient(160deg, #C49A7F, #A07A5F); width: 32px; height: 190px; }
+.b2  { background: linear-gradient(160deg, #EAB198, #CC8870); width: 36px; height: 200px; }
+.b3  { background: linear-gradient(160deg, #D9C98A, #B8A260); width: 30px; height: 185px; }
+.b4  { background: linear-gradient(160deg, #F0D0B8, #D4A888); width: 34px; height: 195px; }
+.b5  { background: linear-gradient(160deg, #9BC7BD, #6A9E94); width: 32px; height: 188px; }
+.b6  { background: linear-gradient(160deg, #B6A2D2, #8870A8); width: 38px; height: 202px; }
+.b7  { background: linear-gradient(160deg, #9FBFE0, #6890B8); width: 28px; height: 180px; }
+.b8  { background: linear-gradient(160deg, #D6A588, #A87858); width: 44px; height: 198px; }
+.b9  { background: linear-gradient(160deg, #B8D29A, #88A868); width: 48px; height: 205px; }
+.b10 { background: linear-gradient(160deg, #E9AAAA, #C07878); width: 36px; height: 196px; }
+.b11 { background: linear-gradient(160deg, #8FBFC0, #5A9090); width: 34px; height: 192px; }
+.b12 { background: linear-gradient(160deg, #C49A7F, #A07A5F); width: 32px; height: 190px; }
+.b13 { background: linear-gradient(160deg, #EAB198, #CC8870); width: 36px; height: 200px; }
+.b14 { background: linear-gradient(160deg, #D9C98A, #B8A260); width: 30px; height: 185px; }
+.b15 { background: linear-gradient(160deg, #F0D0B8, #D4A888); width: 34px; height: 195px; }
+.b16 { background: linear-gradient(160deg, #9BC7BD, #6A9E94); width: 32px; height: 188px; }
 
   /* CURRENTLY READING */
   .currently-reading-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #4A4038; font-weight: 400; margin-bottom: 20px; }
   .current-book { display: flex; flex-direction: column; align-items: center; }
   .current-book-cover {
-    width: 110px; height: 160px;
-    background: #7FAFB0;
-    border-radius: 2px 6px 6px 2px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    padding: 14px 12px;
-    position: relative;
-    box-shadow: 4px 4px 16px rgba(80,40,20,0.25), inset -3px 0 8px rgba(0,0,0,0.2);
+    width: 110px;
+  height: 160px;
+  border-radius: 2px 6px 6px 2px;
+  overflow: hidden;
+  box-shadow: 4px 4px 16px rgba(80,40,20,0.25), inset -3px 0 8px rgba(0,0,0,0.2);
   }
+
+
+.current-book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
   .current-book-cover::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: rgba(0,0,0,0.2); border-radius: 2px 0 0 2px; }
   .current-book-title { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.95); line-height: 1.3; z-index: 1; }
   .current-book-author { font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); z-index: 1; }
@@ -274,10 +316,11 @@
 
 <section id="hero">
   <div>
-    <h1 class="hero-name">Silpa<span>Gollapudi</span></h1>
+    <h1 class="hero-name">Silpa<span>GOLLAPUDI</span></h1>
   </div>
   <div class="hero-right">
     <p class="hero-bio">Bridging business chaos and clean systems — with one foot in engineering and the other moving toward product.</p>
+    <p class="hero-bio">Outside of ~work~, I’m drawn to art and design, and I value the role of creativity in how things are built and experienced. </p>
     <div class="hero-tags">
       <span class="tag">Product</span>
       <span class="tag">Engineering</span>
@@ -441,59 +484,56 @@
   <div id="creative-designs" class="creative-panel active">
     <div class="design-grid">
       <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/Napa2.jpg" alt="Date">
+        </div>
+      </div>
 
+      <div class="design-card">
         <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Napa.jpg" alt="Napa">
-          <span class="img-placeholder-label">Image</span>
+          <img src="images/Date2.jpg" alt="Date">
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/Halloween2.jpg" alt="Halloween">
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/Homegiving2.jpg" alt="Homegiving">
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/Doddi2.jpg" alt="Doddi">
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/Bachella2.jpg" alt="Bach">
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/Cocktails2.jpg" alt="Cocktails">
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap">
+          <img src="images/MurderMystery2.jpg" alt="MM">
         </div>
       </div>
       <div class="design-card">
         <div class="design-img-wrap">
           <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Date.jpg" alt="Date">
-          <span class="img-placeholder-label">Image</span>
-        </div>
-      </div>
-      <div class="design-card">
-        <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Halloween.jpg" alt="Halloween">
-          <span class="img-placeholder-label">Image</span>
-        </div>
-      </div>
-      <div class="design-card">
-        <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Doddi.jpg" alt="Doddi">
-          <span class="img-placeholder-label">Image</span>
-        </div>
-      </div>
-      <div class="design-card">
-        <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Bachella.jpg" alt="Bachella">
-          <span class="img-placeholder-label">Image</span>
-        </div>
-      </div>
-      <div class="design-card">
-        <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Cocktails.jpg" alt="Cocktails">
-          <span class="img-placeholder-label">Image</span>
-        </div>
-      </div>
-      <div class="design-card">
-        <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Murder_Mystery.jpg" alt="Murder Mystery Project">
-          <span class="img-placeholder-label">Image</span>
-        </div>
-      </div>
-      <div class="design-card">
-        <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Friendsgiving.jpg" alt="Thanksgiving">
+          <img src="images/Friendsgiving2.jpg" alt="Thanksgiving">
           <span class="img-placeholder-label">Image</span>
         </div>
       </div>
@@ -503,10 +543,28 @@
 
   <div id="creative-photo" class="creative-panel">
     <div class="photo-grid">
-      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add photography work. Details:')">Add ↗</button></div>
-      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
-      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
-      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
+      <div class="photo-card">
+        <img src="images/Pier.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      <div class="photo-card">
+        <img src="images/Beach.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      <div class="photo-card">
+        <img src="images/Lamp.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      <div class="photo-card">
+        <img src="images/Lighter.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      <div class="photo-card">
+        <img src="images/Tulips.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      <div class="photo-card">
+        <img src="images/Venice.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      <div class="photo-card">
+        <img src="images/Aquarium.jpg" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>  
+      
     </div>
   </div>
 </section>
@@ -569,7 +627,7 @@
 
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2 class="section-title">Contact</h2>
     <div class="section-rule"></div>
   </div>
