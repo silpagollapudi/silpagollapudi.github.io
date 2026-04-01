@@ -1,369 +1,484 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Creative CV</title>
-    <meta name="description" content="Creative CV is a HTML resume template for professionals. Built with Bootstrap 4, Now UI Kit and FontAwesome, this modern and responsive design template is perfect to showcase your portfolio, skils and experience."/>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/aos.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
-  </head>
-  <body id="top">
-    <header>
-      <div class="profile-page sidebar-collapse">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
-          <div class="container">
-            <div class="navbar-translate"><a class="navbar-brand" href="#" rel="tooltip"></a>
-              <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation">
-              <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#skill">Skills</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link smooth-scroll" href="#contact">Contact</a></li>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body { font-family: 'Jost', sans-serif; background: #F5F0E8; color: #1C1A18; min-height: 100vh; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: #F5F0E8; border-bottom: 1px solid rgba(80,60,40,0.15); }
+  .nav-logo { font-size: 14px; font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase; color: #1C1A18; text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 300; color: #4A4038; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #8B4A2A; }
+
+  section { padding: 100px 48px 80px; max-width: 980px; margin: 0 auto; }
+
+  #hero { padding-top: 160px; padding-bottom: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; border-bottom: 1px solid rgba(80,60,40,0.15); }
+  .hero-name { font-size: clamp(52px, 7vw, 80px); font-weight: 200; line-height: 1.0; letter-spacing: 0.06em; text-transform: uppercase; color: #1C1A18; }
+  .hero-name span { display: block; color: #8B4A2A; font-weight: 200; font-style: italic; text-transform: none; letter-spacing: 0.02em; font-size: clamp(44px, 6vw, 70px); }
+  .hero-right { display: flex; flex-direction: column; gap: 20px; padding-bottom: 6px; }
+  .hero-bio { font-size: 14px; line-height: 1.85; color: #2A2520; font-weight: 400; letter-spacing: 0.02em; max-width: 340px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; padding: 5px 12px; border: 1px solid rgba(80,60,40,0.25); color: #4A4038; border-radius: 40px; }
+  .scroll-hint { display: flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; color: #4A4038; }
+  .scroll-line { width: 32px; height: 1px; background: #8B4A2A; display: inline-block; }
+
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
+  .section-num { font-size: 10px; letter-spacing: 0.18em; color: #8B4A2A; font-weight: 400; text-transform: uppercase; }
+  .section-title { font-size: 24px; font-weight: 200; color: #1C1A18; letter-spacing: 0.14em; text-transform: uppercase; }
+  .section-rule { flex: 1; height: 1px; background: rgba(80,60,40,0.15); }
+
+  #experience { border-bottom: 1px solid rgba(80,60,40,0.15); }
+
+  .tab-row { display: flex; margin-bottom: 40px; border-bottom: 1px solid rgba(80,60,40,0.15); }
+  .tab-btn {
+    all: unset; display: inline-block;
+    font-family: 'Jost', sans-serif !important; font-size: 11px !important; letter-spacing: 0.14em !important;
+    text-transform: uppercase !important; font-weight: 400 !important; color: #4A4038 !important;
+    background: #F5F0E8 !important; padding: 12px 24px 12px 0; cursor: pointer; position: relative;
+    transition: color 0.2s; border-radius: 0 !important; border: none !important; outline: none !important;
+    box-shadow: none !important; -webkit-appearance: none !important; appearance: none !important;
+  }
+  .tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 24px; height: 1px; background: #8B4A2A; opacity: 0; transition: opacity 0.2s; }
+  .tab-btn.active { color: #8B4A2A !important; }
+  .tab-btn.active::after { opacity: 1; }
+  .tab-btn:hover { color: #B5704A !important; background: #F5F0E8 !important; }
+
+  .exp-panel { display: none; }
+  .exp-panel.active { display: block; }
+
+  .role-card { display: grid; grid-template-columns: 160px 1fr; gap: 40px; padding: 36px 0 0 0; align-items: start; }
+  .role-meta { display: flex; flex-direction: column; gap: 6px; }
+  .role-dates { font-size: 11px; letter-spacing: 0.08em; color: #4A4038; font-weight: 400; }
+  .role-tag { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B4A2A; background: #EDD9C8; padding: 4px 10px; border-radius: 20px; margin-top: 4px; width: fit-content; font-weight: 400; }
+  .role-title { font-size: 22px; font-weight: 300; color: #1C1A18; letter-spacing: 0.04em; margin-bottom: 4px; }
+  .role-company { font-size: 13px; color: #8B4A2A; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; margin-bottom: 14px; }
+  .role-desc { font-size: 13px; color: #2A2520; line-height: 1.8; font-weight: 400; letter-spacing: 0.02em; }
+
+  .skills-block { margin-top: 36px; }
+  .skills-block-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8B4A2A; font-weight: 400; margin-bottom: 24px; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 56px; }
+  .skills-group-title { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #4A4038; font-weight: 400; margin-bottom: 14px; }
+  .skills-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+  .skill-pill { font-size: 12px; letter-spacing: 0.04em; font-weight: 400; padding: 5px 13px; background: #E8DECE; color: #2A2520; border-radius: 40px; }
+  .certs-list { display: flex; flex-direction: column; gap: 10px; }
+  .cert-item { display: flex; align-items: center; gap: 10px; }
+  .cert-dot { width: 4px; height: 4px; background: #8B4A2A; border-radius: 50%; flex-shrink: 0; }
+  .cert-name { font-size: 13px; color: #2A2520; font-weight: 400; letter-spacing: 0.02em; }
+
+  .client-list { display: flex; flex-direction: column; }
+  .client-item { border-top: 1px solid rgba(80,60,40,0.15); overflow: hidden; }
+  .client-item:last-child { border-bottom: 1px solid rgba(80,60,40,0.15); }
+  .client-header { display: grid; grid-template-columns: 1fr auto 24px; gap: 32px; padding: 24px 0; align-items: center; cursor: pointer; transition: opacity 0.2s; }
+  .client-header:hover { opacity: 0.7; }
+  .client-name { font-size: 17px; font-weight: 300; color: #1C1A18; letter-spacing: 0.04em; }
+  .client-role-label { font-size: 12px; color: #4A4038; letter-spacing: 0.04em; font-weight: 400; margin-top: 3px; }
+  .client-sector { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B4A2A; font-weight: 400; white-space: nowrap; }
+  .client-chevron { font-size: 18px; color: #4A4038; transition: transform 0.3s; display: flex; align-items: center; justify-content: center; user-select: none; }
+  .client-item.open .client-chevron { transform: rotate(180deg); }
+  .client-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+  .client-item.open .client-body { max-height: 800px; padding-bottom: 28px; }
+  .client-roles { display: flex; flex-direction: column; gap: 24px; }
+  .client-role-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B4A2A; font-weight: 400; margin-bottom: 10px; }
+  .client-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .client-bullets li { font-size: 13px; color: #2A2520; line-height: 1.75; font-weight: 400; letter-spacing: 0.01em; padding-left: 16px; position: relative; }
+  .client-bullets li::before { content: '—'; position: absolute; left: 0; color: #B5704A; font-size: 11px; top: 1px; }
+
+  .add-btn { all: unset; display: inline-block; font-family: 'Jost', sans-serif !important; font-size: 10px !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; font-weight: 400 !important; color: #8B4A2A !important; background: #F5F0E8 !important; border: 1px solid #B5704A !important; padding: 7px 16px; border-radius: 20px !important; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .add-btn:hover { background: #8B4A2A !important; color: #F5F0E8 !important; border-color: #8B4A2A !important; }
+
+  /* CREATIVE */
+  #creative { border-bottom: 1px solid rgba(80,60,40,0.15); }
+  .creative-panel { display: none; }
+  .creative-panel.active { display: block; }
+
+  /* DESIGN GALLERY — mockup card style */
+  .design-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+
+  .design-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(80,60,40,0.12);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.25s;
+    cursor: pointer;
+  }
+  .design-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(80,60,40,0.1); }
+
+  /* image area — fixed aspect ratio box */
+  .design-img-wrap {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #F8F6F2;
+    border-bottom: 1px solid rgba(80,60,40,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .design-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* placeholder state when no image */
+  .design-img-wrap.empty {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .img-placeholder-icon {
+    width: 36px;
+    height: 36px;
+    border: 1.5px dashed rgba(80,60,40,0.25);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-placeholder-icon svg { width: 16px; height: 16px; opacity: 0.3; }
+  .img-placeholder-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(80,60,40,0.35); font-weight: 400; }
+
+  .design-meta { padding: 14px 16px 16px; }
+  .design-title { font-size: 13px; font-weight: 400; color: #1C1A18; letter-spacing: 0.04em; margin-bottom: 4px; }
+  .design-type { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #8B4A2A; font-weight: 400; }
+
+  /* PHOTO GRID */
+  .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .photo-card { background: #EDD9C8; min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px; border: 2px dashed #B5704A; cursor: pointer; transition: background 0.3s; }
+  .photo-card:hover { background: #E8DECE; }
+  .placeholder-icon { font-size: 24px; font-weight: 200; color: #8B4A2A; }
+  .placeholder-text { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4A4038; font-weight: 400; }
+
+  /* CONTACT */
+  #contact { padding-bottom: 120px; }
+  .contact-rows { max-width: 480px; }
+  .contact-link-row { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid rgba(80,60,40,0.15); }
+  .contact-link-row:first-child { border-top: 1px solid rgba(80,60,40,0.15); }
+  .contact-link-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; color: #4A4038; }
+  .contact-link-value { font-size: 13px; font-weight: 400; color: #8B4A2A; text-decoration: none; letter-spacing: 0.03em; transition: opacity 0.2s; }
+  .contact-link-value:hover { opacity: 0.7; }
+
+  footer { border-top: 1px solid rgba(80,60,40,0.15); padding: 28px 48px; max-width: 980px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-size: 12px; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: #4A4038; }
+  .footer-copy { font-size: 11px; font-weight: 400; letter-spacing: 0.08em; color: #4A4038; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-name { animation: fadeUp 0.7s ease 0.1s both; }
+  .hero-bio { animation: fadeUp 0.7s ease 0.25s both; }
+  .hero-tags { animation: fadeUp 0.7s ease 0.4s both; }
+  .scroll-hint { animation: fadeUp 0.7s ease 0.55s both; }
+</style>
+
+<nav>
+  <a href="#hero" class="nav-logo">Silpa Gollapudi</a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#creative">Creative</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div>
+    <h1 class="hero-name">Silpa<span>Gollapudi</span></h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-bio">Bridging business chaos and clean systems — with one foot in engineering and the other moving toward product.</p>
+    <div class="hero-tags">
+      <span class="tag">Product</span>
+      <span class="tag">Engineering</span>
+      <span class="tag">Systems</span>
+      <span class="tag">Design</span>
+    </div>
+    <div class="scroll-hint"><span class="scroll-line"></span><span>Scroll to explore</span></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchExpTab('fulltime', this)">Full-time</button>
+    <button class="tab-btn" onclick="switchExpTab('client', this)">Client Work</button>
+  </div>
+
+  <div id="exp-fulltime" class="exp-panel active">
+    <div class="role-card">
+      <div class="role-meta">
+        <span class="role-dates">Jun 2020 – Mar 2026</span>
+        <span class="role-tag">IT Consulting</span>
+      </div>
+      <div>
+        <p class="role-title">Senior Software Consultant</p>
+        <p class="role-company">Stratosphere Consulting</p>
+        <p class="role-desc">IT consulting firm specialized in application development. Led end-to-end product and systems work across government and telecom clients — translating complex business requirements into scalable digital solutions.</p>
+      </div>
+    </div>
+    <div class="skills-block">
+      <p class="skills-block-label">Skills & Certifications</p>
+      <div class="skills-grid">
+        <div>
+          <p class="skills-group-title">Technical Skills</p>
+          <div class="skills-pills">
+            <span class="skill-pill">Figma</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">HTML / CSS</span>
+            <span class="skill-pill">Pega</span>
+            <span class="skill-pill">Tableau</span>
+            <span class="skill-pill">Agile Scrum</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">JIRA</span>
+            <span class="skill-pill">Pega 8.x</span>
+          </div>
+        </div>
+        <div>
+          <p class="skills-group-title">Certifications</p>
+          <div class="certs-list">
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Active IRS MBI Security Clearance</p></div>
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Pega Senior System Architect</p></div>
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Pega System Architect</p></div>
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Pega Business Architect</p></div>
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Pega Decisioning Consultant</p></div>
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Pega Data Scientist</p></div>
+            <div class="cert-item"><span class="cert-dot"></span><p class="cert-name">Pega Customer Service Developer Badge</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="exp-client" class="exp-panel">
+    <div class="client-list">
+      <div class="client-item" id="client-irs">
+        <div class="client-header" onclick="toggleClient('client-irs')">
+          <div><p class="client-name">Internal Revenue Service</p><p class="client-role-label">Senior System Architect</p></div>
+          <span class="client-sector">Government / Tax</span>
+          <span class="client-chevron">&#8964;</span>
+        </div>
+        <div class="client-body">
+          <div class="client-roles">
+            <div>
+              <p class="client-role-title">Senior System Architect</p>
+              <ul class="client-bullets">
+                <li>Supported Trust Fund Recovery Penalty collections and BBA Exam teams</li>
+                <li>Developed a portal for reviewing case documentation, identifying responsible parties, and ensuring compliance with IRS collection policies</li>
+                <li>Collaborated with cross-functional IRS members to improve workflow efficiency within the collections system</li>
+                <li>Led product requirements for cross-entity tax liability tracking between business and individual tax modules</li>
+                <li>Built a digital portal enabling pass-through entities to manage tasks, submit tax documents, create financial reports, and track filing status</li>
               </ul>
             </div>
           </div>
-        </nav>
-      </div>
-    </header>
-    <div class="page-content">
-      <div>
-<div class="profile-page">
-  <div class="wrapper">
-    <div class="page-header page-header-small" filter-color="green">
-      <div class="page-header-image" data-parallax="true" style="background-image: url('images/ut.jpg');"></div>
-      <div class="container">
-        <div class="content-center">
-          <div class="cc-profile-image"><a href="#"><img src="images/silpa.jpg" alt="Image"/></a></div>
-          <div class="h2 title">Silpa Gollapudi</div>
-          <p class="category text-white">Software Engineer, Photographer, Designer</p>
         </div>
       </div>
-      <div class="section">
-        <div class="container">
+      <div class="client-item" id="client-psc">
+        <div class="client-header" onclick="toggleClient('client-psc')">
+          <div><p class="client-name">Montana Public Service Commission</p><p class="client-role-label">Senior System Architect</p></div>
+          <span class="client-sector">Government / Utilities</span>
+          <span class="client-chevron">&#8964;</span>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section" id="about">
-  <div class="container">
-    <div class="card" data-aos="fade-up" data-aos-offset="10">
-      <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <div class="card-body">
-            <div class="h4 mt-0 title">About</div>
-            <p>Hello! I am Silpa Gollapudi.</p>
-            <p>Computer Science graduate from The University of Texas at Austin looking for Full-Time Software Engineering roles in San Francisco, CA. <a href="https://templateflip.com/templates/creative-cv/" target="_blank">Learn More</a></p>
+        <div class="client-body">
+          <div class="client-roles">
+            <div>
+              <p class="client-role-title">Senior System Architect</p>
+              <ul class="client-bullets">
+                <li>Built a platform ensuring ratepayers have access to utility services, including e-filing of dockets</li>
+                <li>Designed and configured workflows for 20–30 utility companies to register or apply for licenses within the state of Montana</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12">
-          <div class="card-body">
-            <div class="h4 mt-0 title">Basic Information</div>
-            <div class="row">
-              <div class="col-sm-4"><strong class="text-uppercase">Age:</strong></div>
-              <div class="col-sm-8">22</div>
+      </div>
+      <div class="client-item" id="client-shentel">
+        <div class="client-header" onclick="toggleClient('client-shentel')">
+          <div><p class="client-name">Shenandoah Telecommunications</p><p class="client-role-label">Business Architect & Senior System Architect</p></div>
+          <span class="client-sector">Telecom</span>
+          <span class="client-chevron">&#8964;</span>
+        </div>
+        <div class="client-body">
+          <div class="client-roles">
+            <div>
+              <p class="client-role-title">Business Architect</p>
+              <ul class="client-bullets">
+                <li>Led weekly grooming, planning, and road mapping calls for a team of 3 developers and 1 tester</li>
+                <li>Created Epics and User Stories for the Shentel Account Management Website</li>
+                <li>Created workflow diagrams for managing services workflow</li>
+                <li>Worked with client to outline additional missing business requirements</li>
+              </ul>
             </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Email:</strong></div>
-              <div class="col-sm-8">silpa.gollapudi@gmail.com</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Phone:</strong></div>
-              <div class="col-sm-8">469-644-6887</div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-sm-4"><strong class="text-uppercase">Address:</strong></div>
-              <div class="col-sm-8">Dallas, Texas</div>
+            <div>
+              <p class="client-role-title">Senior System Architect</p>
+              <ul class="client-bullets">
+                <li>Expanded account management portal to include legacy small business and enterprise customers</li>
+                <li>Built functionality to manage multiple customer service statements and legacy online services</li>
+                <li>Developed workflows for customers to change services, add-ons, and schedule installation via CSG</li>
+                <li>Integrated with Eloqua to send customers updated account information via email</li>
+                <li>Designed a customer service application supporting 120+ CSRs</li>
+                <li>Developed REST APIs to retrieve customer data from iCommV</li>
+                <li>Integrated PingOne SSO with the Shentel Glo Fiber application for secure authentication</li>
+                <li>Designed front-end UI for customers to retrieve and update account credentials</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="section" id="skill">
-  <div class="container">
-    <div class="h4 text-center mb-4 title">Professional Skills</div>
-    <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">HTML</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div><span class="progress-value">90%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">CSS</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div><span class="progress-value">90%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">JavaScript</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div><span class="progress-value">75%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">React.js</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Java</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div><span class="progress-value">100%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Python</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div><span class="progress-value">100%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Swift</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">SQL</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div><span class="progress-value">80%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">AWS</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="progress-container progress-primary"><span class="progress-badge">Docker</span>
-              <div class="progress">
-                <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div><span class="progress-value">70%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="section" id="portfolio">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 ml-auto mr-auto">
-        <div class="h4 text-center mb-4 title">Portfolio</div>
-        <div class="nav-align-center">
-          <ul class="nav nav-pills nav-pills-primary" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#web-development" role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#graphic-design" role="tablist"><i class="fa fa-picture-o" aria-hidden="true"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Photography" role="tablist"><i class="fa fa-camera" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="tab-content gallery mt-5">
-      <div class="tab-pane active" id="web-development">
-        <div class="ml-auto mr-auto">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="images/disaster.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">DisasterFund.me</div>
-                      <p>Web Development/School Project</p>
-                    </figcaption>
-                  </figure></a></div>
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="images/galaxy.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Personal Project</div>
-                      <p>iOS Development</p>
-                    </figcaption>
-                  </figure></a>
-                </div>
-            </div>
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#web-development">
-                  <figure class="cc-effect"><img src="images/nba.png" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Personal Project</div>
-                      <p>Web Development</p>
-                    </figcaption>
-                  </figure></a>
-                </div>
+</section>
 
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab-pane" id="Photography" role="tabpanel">
-        <div class="ml-auto mr-auto">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                  <figure class="cc-effect"><img src="images/1.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Flying over Barcelona</div>
-                      <p>Photography</p>
-                    </figcaption>
-                  </figure></a></div>
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                  <figure class="cc-effect"><img src="images/3.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Italy</div>
-                      <p>Photography</p>
-                    </figcaption>
-                  </figure></a></div>
-            </div>
-            <div class="col-md-6">
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                  <figure class="cc-effect"><img src="images/2.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Island off of Venice</div>
-                      <p>Photography</p>
-                    </figcaption>
-                  </figure></a></div>
-              <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom"><a href="#Photography">
-                  <figure class="cc-effect"><img src="images/4.jpg" alt="Image"/>
-                    <figcaption>
-                      <div class="h4">Dallas</div>
-                      <p>Photography</p>
-                    </figcaption>
-                  </figure></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<section id="creative">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Creative Work</h2>
+    <div class="section-rule"></div>
   </div>
-</div>
-<div class="section" id="experience">
-  <div class="container cc-experience">
-    <div class="h4 text-center mb-4 title">Work Experience</div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>June 2018 - August 2018</p>
-            <div class="h5">Planview, Inc.</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Product Development Intern</div>
-            <p>
-              <li> Assisted the Product Development team to develop a new visualization type in the UI. </li>
-              <li> Integrated mxGraph open source library (draw.io) into product’s current framework using Angular JS. </li>
-              <li> Worked on writing REST API automated tests using Postman. </li>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>May 2017 - August 2017</p>
-            <div class="h5">Planview, Inc.</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Software Engineering/QA Intern</div>
-            <p>
-              <li> Assisted the Product Development team to develop UI features on new product release using C++ and JavaScript. </li>
-              <li> Worked on creating automation test scripts using Java to test newly designed features. </li>
-              <li> Gained exposure to data management and database design using SQL Server Management Studio. </li>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-experience-header">
-            <p>October 2016 - April 2017</p>
-            <div class="h5">Hamper Software</div>
-          </div>
-        </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Software Engineering Intern</div>
-            <p><li>Worked with Branch and iOS intelligent logistics to integrate mobile engagement through deep linking and user routing.</li></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchCreativeTab('designs', this)">Designs</button>
+    <button class="tab-btn" onclick="switchCreativeTab('photo', this)">Photography</button>
   </div>
-</div>
-<div class="section">
-  <div class="container cc-education">
-    <div class="h4 text-center mb-4 title">Education</div>
-    <div class="card">
-      <div class="row">
-        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body cc-education-header">
-            <p>2015 - 2019</p>
-            <div class="h5">Bachelors Degree</div>
+
+  <div id="creative-designs" class="creative-panel active">
+    <div class="design-grid">
+
+      <div class="design-card">
+        <div class="design-img-wrap empty">
+          <div class="img-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
           </div>
+          <span class="img-placeholder-label">Image</span>
         </div>
-        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-          <div class="card-body">
-            <div class="h5">Computer Science</div>
-            <p class="category">University of Texas at Austin</p>
-            <p> Graduated May 2019 </p>
-          </div>
+        <div class="design-meta">
+          <p class="design-title">Murder Mystery Cards</p>
+          <p class="design-type">Event Design</p>
         </div>
       </div>
-    </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap empty">
+          <div class="img-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <span class="img-placeholder-label">Image</span>
+        </div>
+        <div class="design-meta">
+          <p class="design-title">Menu Design</p>
+          <p class="design-type">Print Design</p>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap empty">
+          <div class="img-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <span class="img-placeholder-label">Image</span>
+        </div>
+        <div class="design-meta">
+          <p class="design-title">Event Flyer</p>
+          <p class="design-type">Print Design</p>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap empty">
+          <div class="img-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <span class="img-placeholder-label">Image</span>
+        </div>
+        <div class="design-meta">
+          <p class="design-title">Add title</p>
+          <p class="design-type">Add type</p>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap empty">
+          <div class="img-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <span class="img-placeholder-label">Image</span>
+        </div>
+        <div class="design-meta">
+          <p class="design-title">Add title</p>
+          <p class="design-type">Add type</p>
+        </div>
+      </div>
+
+      <div class="design-card">
+        <div class="design-img-wrap empty">
+          <div class="img-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <span class="img-placeholder-label">Image</span>
+        </div>
+        <div class="design-meta">
+          <p class="design-title">Add title</p>
+          <p class="design-type">Add type</p>
+        </div>
+      </div>
 
     </div>
   </div>
-</div>
 
-</div>
+  <div id="creative-photo" class="creative-panel">
+    <div class="photo-grid">
+      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add photography work. Details:')">Add ↗</button></div>
+      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
+      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
+      <div class="photo-card"><div class="placeholder-icon">+</div><div class="placeholder-text">Add photography</div><button class="add-btn" style="margin-top:8px" onclick="sendPrompt('I want to add more photography.')">Add ↗</button></div>
     </div>
-    <footer class="footer">
-      <div class="container text-center"><a class="cc-facebook btn btn-link" href="#"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a><a class="cc-twitter btn btn-link " href="#"><i class="fa fa-twitter fa-2x " aria-hidden="true"></i></a><a class="cc-google-plus btn btn-link" href="#"><i class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a><a class="cc-instagram btn btn-link" href="#"><i class="fa fa-instagram fa-2x " aria-hidden="true"></i></a></div>
-      <div class="h4 title text-center">Silpa Gollapudi</div>
-      <div class="text-center text-muted">
-        <p>&copy; Creative CV. All rights reserved.<br>Design - <a class="credit" href="https://templateflip.com" target="_blank">TemplateFlip</a></p>
-      </div>
-    </footer>
-    <script src="js/core/jquery.3.2.1.min.js"></script>
-    <script src="js/core/popper.min.js"></script>
-    <script src="js/core/bootstrap.min.js"></script>
-    <script src="js/now-ui-kit.js?v=1.1.0"></script>
-    <script src="js/aos.js"></script>
-    <script src="scripts/main.js"></script>
-  </body>
-</html>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-rows">
+    <div class="contact-link-row">
+      <span class="contact-link-label">Email</span>
+      <a href="mailto:silpa.gollapudi@gmail.com" class="contact-link-value">silpa.gollapudi@gmail.com</a>
+    </div>
+    <div class="contact-link-row">
+      <span class="contact-link-label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/silpa-gollapudi/" target="_blank" class="contact-link-value">linkedin.com/in/silpa-gollapudi</a>
+    </div>
+    <div class="contact-link-row">
+      <span class="contact-link-label">Phone</span>
+      <a href="tel:4696446887" class="contact-link-value">469-644-6887</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Silpa Gollapudi</span>
+  <span class="footer-copy">Portfolio — 2025</span>
+</footer>
+
+<script>
+  function switchExpTab(id, el) {
+    document.querySelectorAll('#experience .tab-btn').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('exp-' + id).classList.add('active');
+  }
+  function switchCreativeTab(id, el) {
+    document.querySelectorAll('#creative .tab-btn').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.creative-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('creative-' + id).classList.add('active');
+  }
+  function toggleClient(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+</script>
