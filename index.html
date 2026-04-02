@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
@@ -14,7 +15,16 @@
 
   section { padding: 100px 48px 80px; max-width: 980px; margin: 0 auto; }
 
-  #hero { padding-top: 260px; padding-bottom: 260px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; border-bottom: 1px solid rgba(80,60,40,0.15); }
+  #hero { 
+    padding-top: 260px; 
+    padding-bottom: 260px; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 48px; 
+    align-items: end; 
+    border-bottom: 1px solid rgba(80,60,40,0.15); 
+    position: relative;
+  }
   .hero-name { font-size: clamp(52px, 7vw, 80px); font-weight: 200; line-height: 1.0; letter-spacing: 0.06em; text-transform: uppercase; color: #1C1A18; }
   .hero-name span { display: block; color: #8B4A2A; font-weight: 200;  text-transform: none; letter-spacing: 0.02em; font-size: clamp(44px, 6vw, 70px); }
   .hero-right { display: flex; flex-direction: column; gap: 20px; padding-bottom: 6px; }
@@ -24,6 +34,25 @@
   .scroll-hint { display: flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; color: #4A4038; }
   .scroll-line { width: 32px; height: 1px; background: #8B4A2A; display: inline-block; }
 
+  .hero-bg-img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 45%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0.2;
+    filter: sepia(30%);
+  }
   .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
   .section-num { font-size: 10px; letter-spacing: 0.18em; color: #8B4A2A; font-weight: 400; text-transform: uppercase; }
   .section-title { font-size: 24px; font-weight: 200; color: #1C1A18; letter-spacing: 0.14em; text-transform: uppercase; }
@@ -319,9 +348,15 @@
 </nav>
 
 <section id="hero">
+  
   <div>
+    <div class="hero-bg-img">
+      <img src="images/Silpa.jpg" alt="">
+    </div>
     <h1 class="hero-name">Silpa<span>GOLLAPUDI</span></h1>
+    
   </div>
+  
   <div class="hero-right">
     <p class="hero-bio">Bridging business chaos and clean systems — with one foot in engineering and the other moving toward product.</p>
     <p class="hero-bio">Outside of ~work~, I’m drawn to art and design, and I value the role of creativity in how things are built and experienced. </p>
@@ -536,9 +571,7 @@
       </div>
       <div class="design-card">
         <div class="design-img-wrap">
-          <div class="img-placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8B4A2A" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-          <img src="images/Friendsgiving2.jpg" alt="Thanksgiving">
-          <span class="img-placeholder-label">Image</span>
+          <img src="images/Friendsgiving2.jpg" alt="Friendsgiving">
         </div>
       </div>
       
@@ -602,7 +635,7 @@
           <div class="book b14" data-tip="The Great Believers"><span class="book-inner">The Great Believers</span></div>
           <div class="book b15" data-tip="The Storied Life of A.J. Fikry"><span class="book-inner">The Storied Life of A.J. Fikry</span></div>
           <div class="book b16" data-tip="The Immortalists"><span class="book-inner">The Immortalists</span></div>
-          <div class="book b17" data-tip="The Immortalists"><span class="book-inner">Fourth Wing</span></div>  
+          <div class="book b17" data-tip="Fourth Wing"><span class="book-inner">Fourth Wing</span></div>  
         
         </div>
         <div class="shelf-plank"></div>
